@@ -4,7 +4,7 @@ Tags: rpg, wpRPG, Role Playing Game, games, ezRPG
 Donate link: http://tagsolutions.tk/donate/
 Requires at least: 3.6
 Tested up to: 3.9
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 WPRPG: 1.0.18
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -26,6 +26,9 @@ Role Playing Game. Typically a Text-based RPG consists of a player vs player or 
 
 
 == Changelog ==
+= 1.0.2 =
+- Added the DB install functions
+- Formated the code via Netbeans
 
 = 1.0.1 =
 - Created the ability to have multiple types of bonuses per Unit
