@@ -3,7 +3,7 @@
 /*
   Plugin Name: WP RPG Army
   Plugin URI: http://wordpress.org/extend/plugins/wprpg_army/
-  Version: 1.0.3
+  Version: 1.0.4
   wpRPG: 1.0.18
   Author: <a href="http://tagsolutions.tk">Tim G.</a>
   Description: RPG Army elements
@@ -20,7 +20,7 @@ global $wpdb;
   @since 1.0.0
  */
 define('WPRPG_Army_Plugin_File', plugin_basename(__FILE__));
-define('WPRPG_Army_Version', '1.0.3');
+define('WPRPG_Army_Version', '1.0.4');
 
 /*
   WPRPG Class Loader
@@ -31,10 +31,10 @@ function wpRPG_Army_wpRPGCheck() {
     global $wpdb;
     if (class_exists('wpRPG')) {
         if (!class_exists('wpRPG_Army')) {
-            include(__DIR__ . '/wprpg-Army-class.php');
+            include(__DIR__ . '/wprpg-army-class.php');
         }
         $rpgArmy = new wpRPG_Army;
-        include ( __DIR__ . '/wprpg-Army-library.php');
+        include ( __DIR__ . '/wprpg-army-library.php');
         $sql = "SELECT * FROM " . $wpdb->base_prefix . "users";
         $ids = $wpdb->get_results($sql);
         foreach ($ids as $key => $val) {
