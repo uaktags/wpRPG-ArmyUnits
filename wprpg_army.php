@@ -39,7 +39,7 @@ function wpRPG_Army_wpRPGCheck() {
         $ids = $wpdb->get_results($sql);
         foreach ($ids as $key => $val) {
             $player = new wpRPG_Player($val->ID);
-            if (!array_key_exists('citizen',$player)) {
+            if (!$player->__isset('citizen')) {
                 $player->update_meta('citizen', 0);
             }
         }

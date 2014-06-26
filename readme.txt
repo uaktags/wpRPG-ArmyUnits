@@ -28,6 +28,7 @@ Role Playing Game. Typically a Text-based RPG consists of a player vs player or 
 == Changelog ==
 = 1.0.4 =
 - Fixed an issue with a function name having the wrong casing. Turns out PHP doesn't seem to like that.
+
 = 1.0.3 =
 - Issue with citizen not adding to player
 

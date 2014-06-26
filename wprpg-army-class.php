@@ -7,7 +7,8 @@ class wpRPG_Army extends wpRPG {
 
     function __construct() {
         parent::__construct();
-        global $wp_rewrite;
+		add_action( 'init', array($this, 'wpRPG_Army_load_language') );
+		global $wp_rewrite;
         $this->plugslug = basename(dirname(__FILE__));
         $this->version = WPRPG_Army_Version;
         add_filter('wpRPG_add_crons', array(
@@ -22,8 +23,12 @@ class wpRPG_Army extends wpRPG {
             $this,
             'trainCallback'
         ));
-    }
+	}
 
+	function wpRPG_Army_load_language(){
+		load_plugin_textdomain('wpRPG-Army', false, basename( dirname( __FILE__ ) ) . '/languages' );
+	}
+	
     function add_mycrons($crons) {
         $my_crons = array(
             '1Day_CitizenGain' => array('class' => 'wpRPG_Army', 'func' => 'increase_citizen', 'duration' => 86400),
