@@ -38,7 +38,7 @@ class wpRPG_Unit {
         $data = $wpdb->get_results($sql);
         foreach ($data as $key => $val) {
             foreach ($val as $k => $v) {
-                $this->$k = $v;
+				$this->self[$val->bonus_name] = $val->bonus_amt;
             }
         }
     }

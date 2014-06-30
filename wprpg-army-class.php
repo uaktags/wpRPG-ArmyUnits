@@ -77,6 +77,9 @@ class wpRPG_Army extends wpRPG {
         if (!is_array($code))
             $code = array();
         global $current_user;
+		if(is_user_logged_in()){
+		$current_user = wp_get_current_user();
+	
         $ArmyCode = array(
             "	$('[id^=train]').on('click', function(event) {
 						event.preventDefault();
@@ -107,6 +110,7 @@ class wpRPG_Army extends wpRPG {
 					});"
         );
         return array_merge($code, $ArmyCode);
+		}
     }
 
     function add_Army_admin_tab($tabs) {
@@ -149,6 +153,7 @@ class wpRPG_Army extends wpRPG {
     }
 
     function Army_options($opt = 0) {
+		global $wpdb;
         $html = "<tr>";
         $html .= "<td>";
         $html .= "<h3>Welcome to Wordpress RPG Army Module!</h3>";
@@ -157,7 +162,42 @@ class wpRPG_Army extends wpRPG {
         $html .= "<br />";
         $html .= "<tr>";
         $html .= "<td>";
-        $html .= "<table border=1><tr><th>Setting Name</th><th>Setting</th></tr>";
+		$html .= "<h3>Unit Category</h3>";
+        $html .= "<table border=1><thead><th>Category Name</th><th>Actions</th></thead>";
+		$html .= "<tbody>";
+		$sql = "SELECT * FROM ".$wpdb->base_prefix ."rpg_army_cats";
+		$units = $wpdb->get_results($sql);
+		foreach($units as $k1 => $v1)
+		{
+				$html .= "<tr id='cat_".$v1->id."'>";
+				$html .= "<td>".$v1->title."</td>";
+				$html .= "<td><div class='del_wrapper'><a href='#' class='del_button' id='del-".$v1->id."'>";
+				$path = plugins_url('images/icon_delete.gif', __FILE__);
+				$html .= '<img src="'.$path .'" border="0" />';
+				$html .= '</a></div></td></tr>';
+		}
+		
+		$html .="</tbody>";
+		$html .= "</table>";
+        $html .= "</td>";
+        $html .= "</tr>";
+        $html .= "<br />";
+        $html .= "<tr>";
+        $html .= "<td>";
+		$html .= "<h3>Unit</h3>";
+        $html .= "<table border=1><tr><th>Unit Name</th><th>Cost</th><th>Min XP Required</th><th>Actions</th></tr>";
+		$html .= "<tbody>";
+		$sql = "SELECT * FROM ".$wpdb->base_prefix ."rpg_army_units";
+		$units = $wpdb->get_results($sql);
+		foreach($units as $k1 => $v1)
+		{
+				$html .= "<tr id='unit_".$v1->id."'><td>".$v1->title."</td><td>".$v1->cost."</td><td>".$v1->minXP."</td><td>";
+				$path = plugins_url('images/icon_delete.gif', __FILE__);
+				$html .= '<img src="'.$path .'" border="0" />';
+				$html .= '</a></div></td></tr>';
+		}
+		
+		$html .="</tbody>";
         $html .= "</table>";
         $html .= "</td>";
         $html .= "</tr>";

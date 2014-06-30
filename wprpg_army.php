@@ -3,7 +3,7 @@
 /*
   Plugin Name: WP RPG Army
   Plugin URI: http://wordpress.org/extend/plugins/wprpg_army/
-  Version: 1.0.4
+  Version: 1.0.5
   wpRPG: 1.0.18
   Author: <a href="http://tagsolutions.tk">Tim G.</a>
   Description: RPG Army elements
@@ -20,7 +20,7 @@ global $wpdb;
   @since 1.0.0
  */
 define('WPRPG_Army_Plugin_File', plugin_basename(__FILE__));
-define('WPRPG_Army_Version', '1.0.4');
+define('WPRPG_Army_Version', '1.0.5');
 
 /*
   WPRPG Class Loader

@@ -20,7 +20,7 @@ function wpRPG_Army_register_settings() {
 }
 
 function wpRPG_Army_showArmy() {
-    global $wpdb, $current_user;
+    global $wpdb;
     $result = '';
     if (file_exists(get_template_directory() . 'templates/wprpg/show_Army.php')) {
         include_once (get_template_directory() . 'templates/wprpg/show_Army.php');
